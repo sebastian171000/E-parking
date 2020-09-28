@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/Plantillas/master.xhtml">
+
+	 <ui:define name="headCont">
+     	<f:event listener="#{plantillaController.verificarSesion()}" type="preRenderView"/>
+    </ui:define>
+
+    <ui:define name="title">
+        .:Permisos insuficientes:.
+    </ui:define>
+
+    <ui:define name="titleCont">
+        <span>Permisos Insuficientes</span>
+    </ui:define>
+
+    <ui:define name="content">
+		<h2>Permisos Insuficientes</h2>    
+    </ui:define>
+
+    <ui:define name="footerCont">
+    </ui:define>
+</ui:composition>
+
+</html>

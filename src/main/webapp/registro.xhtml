@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/Plantillas/master.xhtml">
+
+	<ui:define name="title">
+	Registro
+	</ui:define>
+
+	<ui:define name="titleCont">
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form class="formulario contenedor" id="formulario">
+				<!-- Grupo: Nombre -->
+				<div class="formulario__grupo" id="grupo__nombre">
+					<p:outputLabel  value="Nombres *" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText id="input_nombre" class="formulario__input" value="#{usuarioController.persona.nombres}" />
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">No se aceptan caracteres extraños.</p>
+				</div>
+				
+				<!-- Grupo: Apellido -->
+				<div class="formulario__grupo" id="grupo__apellido">
+					<p:outputLabel  value="Apellidos *" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText id="input_apellido" class="formulario__input" value="#{usuarioController.persona.apellidos}"/>
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">No se aceptan caracteres extraños.</p>
+				</div>
+				
+				<!-- Grupo: DNI -->
+				<div class="formulario__grupo" id="grupo__dni">
+					<p:outputLabel  value="DNI" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText value="#{usuarioController.persona.dni}" id="input_dni" class="formulario__input"/>
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">Su dni debe de contener 8 dígitos.</p>
+				</div>
+				
+				<!-- Grupo: Correo -->
+				<div class="formulario__grupo" id="grupo__correo">
+					<p:outputLabel  value="Correo *" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText value="#{usuarioController.persona.correo}" id="input_correo" class="formulario__input"/>
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">Error en el correo</p>
+				</div>
+				
+				<!-- Grupo: Telefono -->
+				<div class="formulario__grupo" id="grupo__telefono">
+					<p:outputLabel  value="Teléfono *" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText value="#{usuarioController.persona.telefono}" id="input_telefono" class="formulario__input"/>
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">El teléfono debe tener 9 dígitos y sin espacios</p>
+				</div>
+				
+				<!-- Grupo: Usuario -->
+				<div class="formulario__grupo" id="grupo__usuario">
+					<p:outputLabel  value="Usuario *" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText value="#{usuarioController.usuario.usuario}" required="true"  id="input_usuario" class="formulario__input"/>
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">Mínimo 4 digitos y no se aceptan caracteres extraños.</p>
+				</div>
+				
+				<!-- Grupo: Contraseña -->
+				<div class="formulario__grupo" id="grupo__password">
+					<p:outputLabel  value="Contraseña *" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText value="#{usuarioController.usuario.clave}" id="input_password" class="formulario__input"/>
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+				</div>
+	
+	
+				<!-- Grupo: Contraseña 2 -->
+				<div class="formulario__grupo" id="grupo__password2">
+					<p:outputLabel  value="Repetir contraseña *" class="formulario__label"/>
+					<div class="formulario__grupo-input">
+						<p:inputText id="input_password2" class="formulario__input"/>
+						<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					</div>
+					<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+				</div>
+
+			
+				
+				<a href="index.xhtml" class="btn-regresar-inicio-sesion">Regresar a Iniciar Sesión</a>
+				
+			<div class="formulario__mensaje" id="formulario__mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+			</div>
+
+			<div class="formulario__grupo formulario__grupo-btn-enviar">
+				<p:commandButton action="index" id="input_registro" class="formulario__btn" value="Enviar" actionListener="#{usuarioController.insertar()}" />
+				<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+			</div>
+		</h:form>
+
+	</ui:define>
+
+	<ui:define name="footerCont">
+		<h:outputScript name="js/app.js" />
+	</ui:define>
+
+</ui:composition>
+</html>

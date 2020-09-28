@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<title><ui:insert name="title"></ui:insert></title>
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link
+		href='https://fonts.googleapis.com/css?family=Roboto:400,300,500|Ubuntu+Condensed'
+		rel='stylesheet' type='text/css' />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="resources/img/favicon.ico" />
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"/>
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputStylesheet name="css/main_base.css" />
+	<h:outputStylesheet name="css/font_ico.css" />
+	<f:event listener="#{plantillaController.verificarSesion()}" type="preRenderView"/>
+	<ui:insert name="headCont"></ui:insert>
+</h:head>
+<h:body  styleClass="#{plantillaController.someMethod()} body-plantilla">
+			<h:form class="hero-header">
+				<div class="contenido-header">
+					<div>
+					<h:outputLabel value="Hola, #{homeController.imprimirNombre()}" />
+					
+					<p:commandLink  actionListener="#{menuController.cerrarSesion()}"
+						action="index?faces-redirect=true"><i class="fas fa-sign-in-alt"></i></p:commandLink>
+				</div>
+				</div>
+				
+			</h:form>
+			
+			
+	<div class="contenedor-contenido">
+		<ui:insert name="top">
+			<h:form>
+				<p:menubar model="#{menuController.model}">
+					<f:facet name="options">
+					</f:facet>
+				</p:menubar>
+			</h:form>
+		</ui:insert>
+	
+		<ui:insert name="content"></ui:insert>
+	</div>
+		<ui:insert name="button"></ui:insert>
+	
+	<h:outputScript name="js/plantilla.js" />
+</h:body>
+</html>

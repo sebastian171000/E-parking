@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/Plantillas/plantilla.xhtml">
+
+<ui:define name="headCont">
+   	
+</ui:define>
+
+    
+
+<ui:define name="content">
+	<h:form class="contenedor-plantilla">
+	
+		<h2 style="color: black; font-weight: 600;">Mis Vehiculos</h2>	
+		<div class="btn-nuevo">
+			<p:commandButton  value="Nuevo vehiculo" action="#{vehiculoController.nuevoVehiculo()}" />
+		</div>
+	
+		<p:dataTable id="lstVehiculo" var="veh"
+			value="#{vehiculoController.listaVehiculos}" paginator="true"
+			paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+			rows="10" class="estilo-tablas"
+			emptyMessage="No existen registros" rowIndexVar="item">
+	
+			<p:column headerText="Id" sortBy="#{veh.codigo}">
+				<h:outputText value="#{veh.codigo}" />
+			</p:column>
+	
+			<p:column headerText="Marca" sortBy="#{veh.marca}">
+				<h:outputText value="#{veh.marca}" />
+			</p:column>
+			
+			<p:column headerText="Modelo" sortBy="#{veh.modelo}">
+				<h:outputText value="#{veh.modelo}"/>
+			</p:column>
+			
+			<p:column headerText="Placa" sortBy="#{veh.placa}">
+				<h:outputText value="#{veh.placa}"/>
+			</p:column>
+			
+			<p:column headerText="Operación" exportable="false">
+				<h:commandLink action="#{vehiculoController.goUpdate(veh)}" >
+					<i class="fas fa-edit"></i>
+				</h:commandLink>
+				<h:commandLink actionListener="#{vehiculoController.eliminar(veh)}" >
+					<i class="fas fa-trash-alt"></i>
+				</h:commandLink>
+			</p:column>
+	
+		</p:dataTable>
+								
+	</h:form>
+</ui:define>
+
+    <ui:define name="button">
+    </ui:define>
+
+ 
+</ui:composition>
+
+</html>

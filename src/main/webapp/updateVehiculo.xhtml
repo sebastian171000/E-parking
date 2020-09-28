@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/Plantillas/plantilla.xhtml">
+
+	 <ui:define name="headCont">
+     	
+    </ui:define>
+
+    
+
+    <ui:define name="content">
+    
+    
+    <div class="contenedor-vehiculo contenedor-plantilla">
+    		<h2>Nuevo Vehiculo</h2>
+
+		 <h:form class="contenido-nuevo-vehiculo">
+             <div style="display: none;">
+			 	<h:outputLabel for="id" value="ID" styleClass="control-label" />
+				<p:inputText id="id" value="#{vehiculoController.vehiculo.codigo}"  required="true" requiredMessage="The time field is required."/>	
+		 	</div>
+			<div>
+				 <h:outputLabel for="nombreVehiculo" value="Marca: " />
+            	<p:inputText autocomplete="off" id="nombreVehiculo"  value="#{vehiculoController.vehiculo.marca}" maxlength="30" required="true" />	
+			</div>
+           
+			<div>
+				<h:outputLabel for="modeloVehiculo" value="Modelo: "  />
+	            <p:inputText autocomplete="off" id="modeloVehiculo"  value="#{vehiculoController.vehiculo.modelo}" maxlength="30" required="true" />
+			</div>
+            
+            <div>
+            	<h:outputLabel for="placaVehiculo" value="Placa: " />
+            	<p:inputText autocomplete="off" id="placaVehiculo"  value="#{vehiculoController.vehiculo.placa}" maxlength="30" required="true" />
+            </div>
+           
+
+			<div class="btn-nuevo-vehiculo">
+				<p:commandButton value="Actualizar" actionListener="#{vehiculoController.update()}" update="@form" action="vehiculo?faces-redirect=true" />
+            	<p:commandButton value="Cancelar" action="vehiculo?faces-redirect=true" immediate="true"  ajax="false" />
+						
+			</div>
+            
+
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+        </h:form>
+    	 
+    </div>
+    </ui:define>
+
+    <ui:define name="button">
+    </ui:define>
+
+ 
+</ui:composition>
+
+</html>

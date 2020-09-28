@@ -1,0 +1,38 @@
+
+<ui:composition template="/Plantillas/master.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="title">
+		Iniciar Sesión
+	</ui:define>
+	
+	<ui:define name="titleCont">
+	</ui:define>
+	
+	<ui:define name="content">
+		<div class="loginbox">
+			 <h:graphicImage class="avatar" value="/resources/img/avatar.png" />
+			 <h1>Iniciar Sesión</h1>
+			 <h:form>
+	   			<p:outputLabel value="Usuario:" for="txtUsuario"/>
+	   			<p:inputText id="txtUsuario" placeholder="Ingresar Usuario" value="#{indexController.usuario.usuario}"/>
+	   		
+	   			<p:outputLabel value="Contraseña:" for="txtClave"/>
+	   			<p:password id="txtClave" placeholder="Ingresar Contraseña" value="#{indexController.usuario.clave}"/>
+	        		
+	        	<h:outputLabel class="#{indexController.claseError}" value="#{indexController.mensajeError}" />	
+	        	<h:commandButton action="#{indexController.iniciarSesion()}" id="btn-login" class="btn-login" icon="ui-icon-key" value="Iniciar Sesión" />
+	        		
+	        	<a href="registro.xhtml">¿Aún no tienes una cuenta?</a>
+	        </h:form>
+        </div>
+	</ui:define>
+	
+	<ui:define name="footerCont">
+	</ui:define>
+		
+</ui:composition> 

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/Plantillas/plantilla.xhtml">
+
+	 <ui:define name="headCont">
+     	
+    </ui:define>
+
+    
+
+    <ui:define name="content">
+    <h:form class="contenedor-reserva contenedor-plantilla">
+		<h2 style="color: black; font-weight: 600;">Gestión de Reservas</h2>
+		<div class="botones-reserva">
+			<div class="botones-pendiente-historial">
+				<a href="reservaAdmin.xhtml" class="btn-regresar-inicio-sesion">Reservas Pendientes</a>
+				<a href="reservaHistorialAdmin.xhtml" class="btn-regresar-inicio-sesion">Historial de reservas</a>
+			</div>
+			
+		</div>
+		
+		
+				
+		
+						<p:dataTable id="lstReserva" var="res"
+							value="#{reservaController.listarhistorialAdmin}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" class="estilo-tablas tabla-reserva"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							>
+							
+							<p:column headerText="ID" sortBy="#{res.codigo}">
+								<h:outputText value="#{res.codigo}" />
+							</p:column>
+							
+							<p:column headerText="Encargado" sortBy="#{res.estacionamiento.persona.nombres}, #{res.estacionamiento.persona.apellidos}">
+								<h:outputText value="#{res.estacionamiento.persona.nombres}, #{res.estacionamiento.persona.apellidos}" />
+							</p:column>
+
+							<p:column headerText="Dirección" sortBy="#{res.estacionamiento.direccion}">
+								<h:outputText value="#{res.estacionamiento.direccion}" />
+							</p:column>
+							
+							<p:column headerText="Fecha de reserva" sortBy="#{res.fechaReserva}">
+								<h:outputText value="#{res.fechaReserva}"/>
+							</p:column>
+							
+							<p:column headerText="Vehiculo (placa)" sortBy="#{res.vehiculo.placa}">
+								<h:outputText value="#{res.vehiculo.placa}"/>
+							</p:column>
+							
+							<p:column headerText="Hora" sortBy="#{res.hora}">
+								<h:outputText value="#{res.hora}"/>
+							</p:column>
+							
+							<p:column headerText="Tarifa" sortBy="#{res.estacionamiento.tarifa}">
+								<h:outputText value="S/#{res.estacionamiento.tarifa}"/>
+							</p:column>
+							
+							<p:column headerText="Estado" sortBy="#{res.estado}">
+								<h:outputText value="#{res.estado}"/>
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="reservaAdmin"
+									actionListener="#{reservaController.aprobarReserva(res)}" >
+									<i class="fas fa-check-circle"></i>
+								</h:commandLink>
+								<h:commandLink action="reservaAdmin"
+									actionListener="#{reservaController.rechazarReserva(res)}" >
+									<i class="fas fa-times-circle"></i>
+								</h:commandLink>
+
+							</p:column>
+
+						</p:dataTable>
+								
+	</h:form>
+    </ui:define>
+
+    <ui:define name="button">
+    </ui:define>
+
+ 
+</ui:composition>
+
+</html>

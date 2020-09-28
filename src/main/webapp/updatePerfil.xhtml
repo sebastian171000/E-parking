@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/Plantillas/plantilla.xhtml">
+
+	 <ui:define name="headCont">
+     	
+    </ui:define>
+
+    
+
+    <ui:define name="content">
+    	<h:form class="contenedor-estacionamientoadmin contenedor-plantilla">
+    		<h2 style="color: black; font-weight: 600;">Actualizar Perfil</h2>
+    		
+    		<div class="contenido-estacionamientoadmin">
+    		<div style="display: none;">
+			 	<h:outputLabel for="idpersona" value="ID" styleClass="control-label" />
+				<p:inputText id="idpersona" value="#{usuarioController.perilUsuario.persona.codigo}"  required="true" requiredMessage="The time field is required."/>	
+		 	</div>
+		 	<div style="display: none;">
+			 	<h:outputLabel for="idusuario" value="ID" styleClass="control-label" />
+				<p:inputText id="idusuario" value="#{usuarioController.perilUsuario.codigo}"  required="true" requiredMessage="The time field is required."/>	
+		 	</div>
+    			<div>
+    				<i class="fas fa-user"></i>
+	     			<p:inputText placeholder="Nombres: #{usuarioController.perilUsuario.persona.nombres}" />    			
+    			</div>
+    			<div>
+    				<i class="fas fa-user"></i>
+	     			<p:inputText placeholder="Apellidos: #{usuarioController.perilUsuario.persona.apellidos}" />    			
+    			</div>
+    			<div>
+    				<i class="fas fa-id-badge"></i>
+    				<p:inputText placeholder="Dni: #{usuarioController.perilUsuario.persona.dni}" />
+    			</div>
+    			<div>
+    				<i class="fas fa-envelope-open-text"></i>
+    				<p:inputText placeholder="Correo: #{usuarioController.perilUsuario.persona.correo}" />
+    			</div>
+    			<div>
+    				<i class="fas fa-phone-alt"></i>
+    				<p:inputText placeholder="Telefono: #{usuarioController.perilUsuario.persona.telefono}" />
+    			</div>
+    			
+    			<div class="btn-nuevo-vehiculo">
+					<p:commandButton value="Actualizar" actionListener="#{usuarioController.update()}" update="@form" action="perfil?faces-redirect=true" />
+	            	<p:commandButton value="Cancelar" action="perfil?faces-redirect=true" immediate="true"  ajax="false" />
+						
+				</div>
+	    		
+	    		
+	    		
+	    		 		
+    		</div>
+
+    		
+
+				
+    	</h:form>
+
+    </ui:define>
+
+    <ui:define name="button">
+    </ui:define>
+
+ 
+</ui:composition>
+
+</html>

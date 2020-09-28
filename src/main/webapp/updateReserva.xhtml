@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/Plantillas/plantilla.xhtml">
+
+	 <ui:define name="headCont">
+     	
+    </ui:define>
+
+    
+
+    <ui:define name="content">
+    <div class="contenedor-reserva contenedor-plantilla">
+		<h2>Nueva reserva</h2>
+		
+		 <h:form class="contenido-nueva-reserva">
+		 	<div style="display: none;">
+				<h:outputLabel for="id" value="ID" styleClass="control-label" />
+				<p:inputText id="id" value="#{reservaController.reserva.codigo}"  required="true" requiredMessage="The time field is required."/>
+            </div>
+            <div>
+	            <p:outputLabel for="cboVehiculos" value="Vehiculo"/>
+	   			<p:selectOneMenu  id="cboVehiculos" value="#{reservaController.vehiculo.codigo}">
+	   				<f:selectItems value="#{vehiculoController.listaVehiculos}" var="veh" itemLabel="#{veh.modelo}"
+	   				itemValue="#{veh.codigo}"/>
+	   			</p:selectOneMenu>
+            </div>
+            <div>
+	            <p:outputLabel for="cboEstacionamientos" value="Estacionamiento"/>
+	   			<p:selectOneMenu id="cboEstacionamientos" value="#{reservaController.estacionamiento.codigo}">
+	   				<f:selectItems value="#{reservaController.listaEstacionamientos}" var="est" itemLabel="#{est.direccion} | #{est.distrito.nombre} | S/#{est.tarifa} por hora | #{est.espacios} autos de capacidad"
+		   				itemValue="#{est.codigo}"/>
+	   			</p:selectOneMenu>
+            </div>
+            <div>
+            	<h:outputLabel for="placaVehiculo" value="Fecha " styleClass="control-label" />
+            	<p:calendar  id="placaVehiculo" value="#{reservaController.reserva.fechaReserva}" required="true" />
+            </div>
+            <div>
+	            <h:outputLabel for="hora" value="Hora" styleClass="control-label" />
+				<p:inputText id="hora" value="#{reservaController.reserva.hora}"  required="true" requiredMessage="The time field is required."/>
+            </div>
+            <div>
+	            <h:outputLabel for="nhora" value="Número de horas" styleClass="control-label" />
+				<p:inputText id="nhora" value="#{reservaController.reserva.nhoras}" required="true" requiredMessage="The time field is required."/>
+            </div>
+    			
+			<!-- Lista de estacionamientos 
+			<p:dataTable value="#{reservaController.listaEstacionamientos}" var="es">
+    		<p:column headerText="Nombre">
+    			<h:outputText value="#{es.nombre}" />
+    		</p:column>
+    		<p:column headerText="Tarifa">
+    			<h:outputText value="S/#{es.tarifa}" />
+    		</p:column>
+    		<p:column headerText="Telefono">
+    			<h:outputText value="#{es.persona.telefono}" />
+    		</p:column>
+    		<p:column headerText="Capacidad">
+    			<h:outputText value="#{es.espacios}" />
+    		</p:column>
+    		<p:column headerText="Direccion">
+    			<h:outputText value="#{es.direccion}" />
+    		</p:column>
+    		
+    		
+    	</p:dataTable>-->
+			<!-- Botones -->
+			<div class="btn-nuevo-vehiculo">
+	            <p:commandButton value="Actualizar" actionListener="#{reservaController.update()}"  update="@form" action="reserva?faces-redirect=true" />
+	            <p:commandButton value="Cancelar" action="reserva?faces-redirect=true" immediate="true"  ajax="false" />
+			</div>
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+        </h:form>
+			
+	</div>>
+    </ui:define>
+
+    <ui:define name="button">
+    </ui:define>
+
+ 
+</ui:composition>
+
+</html>

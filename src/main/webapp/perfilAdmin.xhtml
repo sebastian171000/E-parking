@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/Plantillas/plantilla.xhtml">
+
+	 <ui:define name="headCont">
+     	
+    </ui:define>
+
+    
+
+    <ui:define name="content">
+    	<h:form class="contenedor-estacionamientoadmin contenedor-plantilla">
+    		<h2 style="color: black; font-weight: 600;">Perfil</h2>
+    		<div class="contenido-estacionamientoadmin">
+    			<div>
+    				<i class="fas fa-user"></i>
+	     			<h:outputLabel value="Nombre del encargado: 
+	     			#{estacionamientoAdminController.estacionamiento.persona.nombres}
+	     			#{estacionamientoAdminController.estacionamiento.persona.apellidos}" />    			
+    			</div>
+    			<div>
+    				<i class="fas fa-id-badge"></i>
+    				<h:outputLabel value="Dni: #{estacionamientoAdminController.estacionamiento.persona.dni}" />
+    			</div>
+    			<div>
+    				<i class="fas fa-envelope-open-text"></i>
+    				<h:outputLabel value="Correo de contacto: #{estacionamientoAdminController.estacionamiento.persona.correo}" />
+    			</div>
+    			<div>
+    				<i class="fas fa-phone-alt"></i>
+    				<h:outputLabel value="Telefono: #{estacionamientoAdminController.estacionamiento.persona.telefono}" />
+    			</div>
+    			
+    			
+	    		
+	    		
+	    		
+	    		 		
+    		</div>
+
+    		
+
+				
+    	</h:form>
+
+    </ui:define>
+
+    <ui:define name="button">
+    </ui:define>
+
+ 
+</ui:composition>
+
+</html>
